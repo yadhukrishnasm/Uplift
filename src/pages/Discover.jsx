@@ -1,6 +1,7 @@
 // import React, { useState, useEffect } from 'react';
 import '../components/firebaseConfig'
 import { getFirestore, addDoc, collection, query, where, getDocs } from 'firebase/firestore';
+import EventPreview from '../components/eventPreview';
 
 export default function Discover() {
 //   const [eventData, setEventData] = useState('')
@@ -19,8 +20,12 @@ export default function Discover() {
     console.log(listevent)
   }
   return (
-    <div>
-    <button onClick={eventList}>search</button>
+    <div className="p-10 relative flex flex-col gap-5">
+        <span className="text-2xl">Discover</span>
+        <div className="flex flex-col justify-center items-center">
+        {listevent}
+        {/* <EventPreview img={} title={} desc={} time={} slots={}/> */}
+        </div>
     </div>
   )
 }

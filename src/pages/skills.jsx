@@ -22,7 +22,7 @@ export default function Skills() {
             </div>
         </div>
         <div className="flex justify-center">
-            <button className='px-4 rounded-full border w-fit h-12 bg-green-300'>discover events</button>
+            <button className='px-4 rounded-full border w-fit h-12 shadow-[-3px_3px_0_0_rgba(56,163,165,1)]bg-green-300'>discover events</button>
         </div>
 </div>
   )
