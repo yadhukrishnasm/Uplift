@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState,  } from 'react';
 import {auth,provider} from'./firebaseConfig'
 import { signInWithPopup } from 'firebase/auth';
 
