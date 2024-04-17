@@ -23,8 +23,9 @@ export default function Discover() {
     <div className="p-10 relative flex flex-col gap-5">
         <span className="text-2xl">Discover</span>
         <div className="flex flex-col justify-center items-center">
-        {listevent}
-        {/* <EventPreview img={} title={} desc={} time={} slots={}/> */}
+        {/* {listevent.map((content,index)=>(
+             <EventPreview img={content.image} title={content} desc={} time={} slots={}/> 
+        ))} */}
         </div>
     </div>
   )
