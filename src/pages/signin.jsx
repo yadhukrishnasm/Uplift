@@ -18,8 +18,8 @@ export default function Signin() {
         })
     }
   return (
-    <div className="     justify-between">
-        <p><b>Discover</b> meaningful</p>
+    <div className="justify-between flex flex-col h-screen p-16">
+        <p className="text-2xl"><b>Discover</b> meaningful volunteer opportunities near you</p>
     <div className="gap-3 flex flex-col">
         <span>
             <p>sign up with google -</p>
