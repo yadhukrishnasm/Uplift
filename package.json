@@ -1,25 +1,26 @@
 {
   "name": "uplift",
-  "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@expo/metro-runtime": "~3.1.3",
-    "expo": "~50.0.14",
-    "expo-status-bar": "~1.11.1",
-    "nativewind": "^2.0.11",
-    "react": "18.2.0",
-    "react-native": "0.73.6",
-    "react-native-web": "~0.19.6"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0",
-    "tailwindcss": "^3.3.2"
-  },
-  "private": true
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "vite": "^5.2.0"
+  }
 }
