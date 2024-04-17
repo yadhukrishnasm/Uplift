@@ -29,7 +29,6 @@ export default function Profile() {
       if (!UserId) {
         return; // Handle missing user info in session storage
       }
-
       const uid = JSON.parse(UserId);
       const db = getFirestore();
 
@@ -40,6 +39,7 @@ export default function Profile() {
         let fetchedUserData = null;
         querySnapshot.forEach((doc) => {
           fetchedUserData = doc.data();
+          console.log(fetchedUserData)
           return false; // Stop iterating after the first document (assuming single user)
         });
 
