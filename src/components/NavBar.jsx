@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
-    <div className="absolute bottom-0 w-full h-fit py-2 align-middle border-2 rounded-sm">
+    <div className="fixed bg-green-100 bottom-0 w-full h-fit py-2 align-middle border-2 rounded-sm">
       <div className="flex w-4/6 justify-between mx-auto">
         <Tab to="discover" icon={Discover} name="discover" />
         <Tab to="events" icon={Events} name="events" />
