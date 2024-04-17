@@ -1,24 +1,25 @@
-import {auth} from '../components/firebaseConfig'
-import { useState } from 'react'
+import {useNavigate} from 'react-router-dom';
+
 import {addDoc, collection, getFirestore} from 'firebase/firestore'
 let skills = [];
 export default function Skills() {
+  const navigate = new useNavigate();
   const db = getFirestore();
-  
-  const subscribed = auth.auth.onAuthStateChanged((user) => {
-    if (user) {
-      // Extract user data if signed in
-      console.log(user)
-    } else {
-      console.log("Not logged In")
-    }
-  });
-subscribed();
-
+  const userdata = JSON.parse(sessionStorage.getItem('userinfo'));
   const SaveUserData = async () => {
+    const phonenum = document.getElementById('phone-no').value; 
     const savedata = await addDoc(collection(db,'UserData'), {
-      name : "",
-    })
+      name : userdata.name,
+      email : userdata.email,
+      uid : userdata.uid,
+      phone : phonenum,
+      skills : skills,
+      badges : [],
+      exp : "",
+      joinedevent : [],
+      createdevent : [],
+    });
+    navigate('/discover');
   }
 
   return (
@@ -27,7 +28,7 @@ subscribed();
             <p>Select your <b>skills</b> to connect with events that need you.</p>
         </div>
         <div className="pl-8 pr-3 gap-2 flex flex-col"> 
-            <input type="number" placeholder="Enter PhoneNo." className="box"/>
+            <input type="number" placeholder="Enter PhoneNo." className="box" id="phone-no"/>
             <div>
                 <span className="text-xs font-bold">Construction & Maintenance</span>
                 <div>
@@ -43,7 +44,7 @@ subscribed();
             </div>
         </div>
         <div className="flex justify-center">
-            <button className='px-4 rounded-full border w-fit h-12 shadow-[-3px_3px_0_0_rgba(56,163,165,1)]bg-green-300'>discover events</button>
+            <button onClick={SaveUserData} className='px-4 rounded-full border w-fit h-12 shadow-[-3px_3px_0_0_rgba(56,163,165,1)]bg-green-300'>discover events</button>
         </div>
 </div>
   )

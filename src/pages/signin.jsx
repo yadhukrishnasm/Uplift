@@ -1,14 +1,20 @@
 import { useState,  } from 'react';
 import {auth,provider} from'../components/firebaseConfig'
 import { signInWithPopup } from 'firebase/auth';
-
+import {useNavigate} from 'react-router-dom';
 export default function Signin() {
-    const [value,setValue] = useState('');
-    const signIn = () => {
-        signInWithPopup(auth,provider).then((data) => {
-            setValue(data)
-            console.log(data)
-            console.log(value)
+    const navigate = useNavigate();
+    const signIn = async () => {
+        signInWithPopup(auth,provider)
+        .then((data) => {
+            const userInfo = {name : data.user.displayName,
+            email : data.user.email,
+            uid : data.user.uid,
+            }
+            const userInfoJSON = JSON.stringify(userInfo);
+            console.log(userInfo)
+            sessionStorage.setItem('userinfo', userInfoJSON);
+            navigate('/skills');
         })
     }
   return (
