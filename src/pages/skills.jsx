@@ -2,6 +2,7 @@ import {auth} from '../components/firebaseConfig'
 import { useState } from 'react'
 import {addDoc, collection, getFirestore} from 'firebase/firestore'
 let skills = [];
+
 export default function Skills() {
   const db = getFirestore();
   
@@ -50,7 +51,7 @@ subscribed();
 }
 
 
-function Skill({value}) {
+const Skill= ({value}) => {
   const AddSkills = () => {
     skills.push(value)
     console.log(skills)
@@ -61,3 +62,5 @@ function Skill({value}) {
       </button>
     );
   }
+
+  export {Skill};
