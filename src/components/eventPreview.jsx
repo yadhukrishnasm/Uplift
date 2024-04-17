@@ -2,7 +2,7 @@
 
 export default function EventPreview(props) {
   return (
-    <div className="border-[#38A3A5] border w-64 h-52 rounded-2xl relative shadow-[-4px_4px_0_0_rgba(56,163,165,1)]">
+    <div className="fw-64 h-52 rounded-2xl relative shadow-[-4px_4px_0_0_rgba(56,163,165,1)]">
 
       <div className="absolute right-0 px-4 rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl border bg-lime-600 ">slots {props.slots}</div>
 
