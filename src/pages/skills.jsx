@@ -21,6 +21,9 @@ export default function Skills() {
                 </div>
             </div>
         </div>
+        <div className="flex justify-center">
+            <button className='px-4 rounded-full border w-fit h-12 bg-green-300'>discover events</button>
+        </div>
 </div>
   )
 }
