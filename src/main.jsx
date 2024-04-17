@@ -8,6 +8,7 @@ import Events from "./pages/events.jsx";
 import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Discover from "./pages/discover.jsx";
+import Layout from "./components/Layout.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -17,7 +18,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/welcome" element={<Welcome />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/skills" element={<Skills />} />
-        <Route path="/d">
+        <Route path="/d" element={<Layout />}>
           <Route path="discover" element={<Discover />} />
           <Route path="events" element={<Events />} />
           <Route path="profile" />

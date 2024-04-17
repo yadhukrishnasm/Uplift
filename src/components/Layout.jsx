@@ -4,8 +4,8 @@ import NavBar from "./NavBar"; // Assuming NavBar is in the same directory
 export default function Layout() {
   return (
     <div>
-      <NavBar />
       <Outlet />
+      <NavBar />
     </div>
   );
 }
