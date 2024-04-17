@@ -8,7 +8,9 @@ export default function Skills() {
   const db = getFirestore();
   const userdata = JSON.parse(sessionStorage.getItem('userinfo'));
   const SaveUserData = async () => {
-    const phonenum = document.getElementById('phone-no').value; 
+    const phonenum = document.getElementById('phone-no').value;
+    const Skills = {skills : skills, phone : phonenum};
+    sessionStorage.setItem('user_skills',JSON.stringify(Skills)); 
     const savedata = await addDoc(collection(db,'UserData'), {
       name : userdata.name,
       email : userdata.email,
