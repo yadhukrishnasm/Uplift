@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import './firebaseConfig'
+// import React, { useState, useEffect } from 'react';
+import '../components/firebaseConfig'
 import { getFirestore, addDoc, collection, query, where, getDocs } from 'firebase/firestore';
 
 export default function Discover() {
-  const [eventData, setEventData] = useState('');
+//   const [eventData, setEventData] = useState('')
   //const UserInfo = sessionStorage.getItem('UserInfo');
   const desiredSkills = ["Event Planning & Organization","Videography"]; 
   console.log(desiredSkills)
