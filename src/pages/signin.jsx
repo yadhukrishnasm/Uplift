@@ -1,5 +1,16 @@
+import { useState,  } from 'react';
+import {auth,provider} from'../components/firebaseConfig'
+import { signInWithPopup } from 'firebase/auth';
 
 export default function Signin() {
+    const [value,setValue] = useState('');
+    const signIn = () => {
+        signInWithPopup(auth,provider).then((data) => {
+            setValue(data)
+            console.log(data)
+            console.log(value)
+        })
+    }
   return (
     <div className="     justify-between">
         <p><b>Discover</b> meaningful</p>
@@ -8,7 +19,7 @@ export default function Signin() {
             <p>sign up with google -</p>
         </span>
         <div className="flex flex-col justify-center items-center">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-fit shadow border border-blue-900">
+            <button onClick={signIn} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-fit shadow border border-blue-900">
                 <img src="" alt="" />
                 google
             </button>
