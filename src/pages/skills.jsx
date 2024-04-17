@@ -1,5 +1,26 @@
-
+import {auth} from '../components/firebaseConfig'
+import { useState } from 'react'
+import {addDoc, collection, getFirestore} from 'firebase/firestore'
+let skills = [];
 export default function Skills() {
+  const db = getFirestore();
+  
+  const subscribed = auth.auth.onAuthStateChanged((user) => {
+    if (user) {
+      // Extract user data if signed in
+      console.log(user)
+    } else {
+      console.log("Not logged In")
+    }
+  });
+subscribed();
+
+  const SaveUserData = async () => {
+    const savedata = await addDoc(collection(db,'UserData'), {
+      name : "",
+    })
+  }
+
   return (
     <div className='py-12 flex flex-col h-screen gap-8'>
         <div className="break-words w-3/4 px-8">
@@ -30,8 +51,12 @@ export default function Skills() {
 
 
 function Skill({value}) {
+  const AddSkills = () => {
+    skills.push(value)
+    console.log(skills)
+  }
     return (
-      <button className="border mr-2 mb-2 border-black border-solid rounded-full px-3  text-sm">
+      <button onClick={AddSkills} className="border mr-2 mb-2 border-black border-solid rounded-full px-3  text-sm">
         {value}
       </button>
     );
