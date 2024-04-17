@@ -21,6 +21,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path='event/new'/>
         </Routes>
     </BrowserRouter>
-    <App />
   </React.StrictMode>,
 )
