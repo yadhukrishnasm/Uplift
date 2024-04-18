@@ -3,6 +3,7 @@ import "../components/firebaseConfig";
 import { getFirestore, addDoc, collection, query, where, getDocs } from "firebase/firestore";
 import EventPreview from "../components/eventPreview";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Discover() {
   //   const [eventData, setEventData] = useState('')
@@ -12,6 +13,7 @@ export default function Discover() {
   const db = getFirestore();
   const [listevent, setListEvent] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [docIds, setDocIds] = useState([]);
 
   useEffect(() => {
     const eventList = async () => {
@@ -21,11 +23,14 @@ export default function Discover() {
       );
       const querySnapshot = await getDocs(q);
       const list = [];
+      const ids = [];
 
       querySnapshot.forEach((doc) => {
         list.push(doc.data());
+        ids.push(doc.id);
       });
       setListEvent(list);
+      setDocIds(ids);
       console.log(listevent);
       setLoading(false);
     };
@@ -43,16 +48,17 @@ export default function Discover() {
         {loading ? (
           <div>loading...</div>
         ) : listevent.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
             {listevent.map((content, index) => (
-              <EventPreview
-                key={index}
-                img={content.image}
-                title={content.title}
-                desc={content.description}
-                time={content.date}
-                slots={content.slot}
-              />
+              <Link to={`/event/${docIds[index]}`} key={index} className="w-full">
+                <EventPreview
+                  img={content.image}
+                  title={content.title}
+                  desc={content.description}
+                  time={content.date}
+                  slots={content.slot}
+                />
+              </Link>
             ))}
           </div>
         ) : (
