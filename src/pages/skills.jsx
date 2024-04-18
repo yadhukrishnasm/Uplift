@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import {useState} from 'react'
 
 import { addDoc, collection, getFirestore } from "firebase/firestore";
-import { useState } from "react";
 let skills = [];
 
 export default function Skills() {
