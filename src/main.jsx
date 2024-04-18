@@ -26,7 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="events" element={<Events />} />
           <Route path="profile" element={<Profile />} />
         </Route>
-        <Route path="event" element={<EventPage />} />
+        <Route path="event/:id" element={<EventPage />} />
         <Route path="event/new" element={<CreateEvent />} />
       </Routes>
     </BrowserRouter>
