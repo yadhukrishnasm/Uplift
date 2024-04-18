@@ -5,6 +5,7 @@ import { useEffect,useState } from "react";
 
 export default function EventPage() {
   const {id} = useParams();
+  const status = "Open";
   const [eventData, setEventData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -21,8 +22,8 @@ export default function EventPage() {
     fetchEventData();
   },[]);
 
-
-
+  
+  
   return (
     <div className="mb-4">
       <img src={eventData.image} alt="" className="h-36 w-full border-b-4 border-b-teal-500" />
@@ -30,7 +31,7 @@ export default function EventPage() {
         Volunteer!
       </button>
       <div className="flex justify-between ">
-        <span className="bg-teal-500 text-lg ml-8 px-5 text-white p-1">{eventData.status}</span>
+        <span className="bg-teal-500 text-lg ml-8 px-5 text-white p-1">{status}</span>
         <p className="mr-5 mt-2 font-semibold">{eventData.date}</p>
       </div>
 
