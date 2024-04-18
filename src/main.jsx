@@ -12,6 +12,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout.jsx";
 import CreateEvent from "./pages/createEvent.jsx";
 import Discover from "./pages/discover.jsx";
+import ManageEvents from "./pages/manageEvents.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </Route>
         <Route path="event" element={<EventPage />} />
         <Route path="event/new" element={<CreateEvent />} />
+        <Route path="/manage" element={<ManageEvents/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
