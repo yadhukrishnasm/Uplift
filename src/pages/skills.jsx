@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import {useState} from 'react'
 
 import { addDoc, collection, getFirestore } from "firebase/firestore";
-import { useState } from "react";
 let skills = [];
 
 export default function Skills() {
@@ -25,6 +25,10 @@ export default function Skills() {
     });
     navigate("/d/discover");
   };
+
+  function clearSelections(){
+    skills = [];
+  }
 
   return (
     <div className="py-12 flex flex-col h-screen gap-8">
@@ -59,6 +63,7 @@ export default function Skills() {
           </div>
         </div>
       </div>
+        <button onClick={clearSelections} className="px-4 rounded-full border">clear selection</button>
       <div className="flex justify-center">
         <button
           onClick={SaveUserData}
@@ -74,6 +79,8 @@ export default function Skills() {
 const Skill = ({ value }) => {
   const [selected, setSelected] = useState(false);
   const bg = "bg-[#8DD7D8]";
+
+  const [clicked, setClicked] = useState(false);
 
   const AddSkills = () => {
     if (!selected) {
