@@ -42,7 +42,7 @@ export default function Discover() {
   }, []);
 
   return (
-    <div className="p-10 relative flex flex-col gap-5">
+    <div className="p-10 relative flex flex-col gap-5 mb-14">
       <span className="text-2xl">Discover</span>
       <div className="flex flex-col justify-center items-center">
         {loading ? (

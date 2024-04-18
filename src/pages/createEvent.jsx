@@ -2,31 +2,56 @@ import { useState } from 'react';
 
 export default function CreateEvent() {
     const [inputs, setInputs] = useState({
-        requiredSpot: 0,
+        title: "",
+        description: "",
+        location: "",
+        date: "",
+        img: "",
+        skill:"",
+        Spot: "",
         noSpots: 0
     });
 
+    
     const input = "border-2 border-black bg-[#E5ECD5] rounded-xl font-thin p-2";
     const label = "ml-3 text-sm ";
 
-    
-    const handleClickr = () => {
-        const requiredSpotr = document.getElementById('requiredSpotr').value;
-        const noSpotr = document.getElementById('noSpotr').value;
-        // Generate the HTML for the new div
-        const newDivHTML = generateDivr(requiredSpotr, noSpotr);
-
-        // Insert the new div HTML code into the container
-        document.getElementById('divContainer').insertAdjacentHTML('beforeend', newDivHTML);
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setInputs({ ...inputs, [name]: value });
     };
 
-    const generateDivr = (requiredSpotr, noSpotr) => {
+    const handleClicks = () => {
+        const newDivHTML = generateDivs(inputs.requiredSpots, inputs.noSpots);
+        document.getElementById('divContainers').insertAdjacentHTML('beforeend', newDivHTML);
+    };
+
+    const generateDivs = (requiredSpots, noSpots) => {
         return (
-            `<div  class="flex justify-between border items-center rounded-xl shadow-[-4px_4px_0_0_rgba(56,163,165,1)] border-[#38A3A5] my-5 p-2">
-                <p>${requiredSpotr}</p>
-                <p>${noSpotr} slots</p>
+            `<div class="flex justify-between border items-center rounded-xl shadow-[-4px_4px_0_0_rgba(56,163,165,1)] border-[#38A3A5] my-5 p-2">
+                <p>${requiredSpots}</p>
+                <p>${noSpots} slots</p>
             </div>`
         );
+    };
+
+    const handleClickr = () => {
+        const newDivHTML = generateDivr(inputs.requiredSpotr);
+        document.getElementById('divContainerr').insertAdjacentHTML('beforeend', newDivHTML);
+    };
+
+    const generateDivr = (requiredSpotr) => {
+        return (
+            `<div class="flex justify-between border items-center rounded-xl shadow-[-4px_4px_0_0_rgba(56,163,165,1)] border-[#38A3A5] my-5 p-2">
+                <p>${requiredSpotr}</p>
+            </div>`
+        );
+    };
+
+    const handleSubmit = () => {
+        
+        console.log(inputs);
+        
     };
 
     return (
@@ -37,24 +62,47 @@ export default function CreateEvent() {
             </div>
             <div className="flex flex-col px-8">
                 <label htmlFor="title" className={label}>title</label>
-                <input className={input}
-                       type="text" name="title" placeholder="write a title for the event"/>
+                <input
+                    className={input}
+                    type="text"
+                    name="title"
+                    placeholder="write a title for the event"
+                    value={inputs.title}
+                    onChange={handleChange}
+                />
                 <br/>
 
-                <label htmlFor="desc" className={label}>description</label>
-                <textarea name="desc" id="" className={input} cols="20" rows="3"
-                          placeholder="write a description providing all details about the event."></textarea>
+                <label htmlFor="description" className={label}>description</label>
+                <textarea
+                    name="description"
+                    className={input}
+                    cols="20"
+                    rows="3"
+                    placeholder="write a description providing all details about the event."
+                    value={inputs.description}
+                    onChange={handleChange}
+                ></textarea>
                 <br/>
 
                 <label htmlFor="location" className={label}>location</label>
-                <input type="text" placeholder="the place where it’s happening..." name="location"
-                       className={input}/>
+                <input
+                    type="text"
+                    placeholder="the place where it’s happening..."
+                    name="location"
+                    className={input}
+                    value={inputs.location}
+                    onChange={handleChange}
+                />
                 <br/>
 
                 <div className="flex justify-between">
-                    <input type="date" className="rounded-lg border px-3 py-1 outline-dotted outline-sky-200 "
-                           name="time"/>
-
+                    <input
+                        type="date"
+                        className="rounded-lg border px-3 py-1 outline-dotted outline-sky-200 "
+                        name="date"
+                        value={inputs.date}
+                        onChange={handleChange}
+                    />
                     <label htmlFor="fileInput"
                            className="rounded-lg border px-3 py-1 outline-dotted outline-sky-200 ">add image</label>
                     <input
@@ -63,54 +111,67 @@ export default function CreateEvent() {
                         multiple
                         style={{display: 'none'}}
                     />
-
                 </div>
             </div>
 
-
             <div className="px-9 py-6">
                 <p className="font-bold mb-5 ">required spots</p>
-                <div id="divContainer"></div>
+                <div id="divContainers"></div>
                 <div className="flex justify-between border items-center rounded-xl shadow-[-4px_4px_0_0_rgba(56,163,165,1)] border-[#38A3A5] my-5 p-2">
 
-                    <select id="requiredSpot" className="border-b-2 outline-none">
+                    <select
+                        id="requiredSpots"
+                        className="border-b-2 outline-none"
+                        name="requiredSpot"
+                        value={inputs.skill}
+                        onChange={handleChange}
+                    >
                         <option value="">Select</option>
-                        <option value="carpentary">carpentary</option>
-                        <option value="plumbing">plumbing</option>
-                        <option value="painting">painting</option>
-                        <option value="electrical work">electrical work</option>
-                        <option value="landscaping">landscaping</option>
-                        <option value="heavy lifting">heavy lifting</option>
+                        <option value="carpentry">Carpentry</option>
+                        <option value="plumbing">Plumbing</option>
+                        <option value="painting">Painting</option>
+                        <option value="electrical work">Electrical Work</option>
+                        <option value="landscaping">Landscaping</option>
+                        <option value="heavy lifting">Heavy Lifting</option>
                     </select>
 
-                    <input type="number" className="border-2 border-black w-8 px-2 rounded-lg" id="noSpots"/>
-                    <button className="border px-2 rounded-md " onClick={handleClickr}>save</button>
-
+                    <input
+                        type="number"
+                        className="border-2 border-black w-8 px-2 rounded-lg"
+                        id="noSpots"
+                        name="noSpots"
+                        value={inputs.spots}
+                        onChange={handleChange}
+                    />
+                    <button className="border px-2 rounded-md " onClick={handleClicks}>save</button>
                 </div>
-                
             </div>
 
             <div className="px-9 pb-6">
                 <h1 className="font-bold mb-5">required resources</h1>
+                <div id="divContainerr"></div>
                 <div className="flex justify-between border items-center rounded-xl shadow-[-4px_4px_0_0_rgba(56,163,165,1)] border-[#38A3A5] my-5 p-2">
 
-                    <select id="requiredSpotr" className="border-b-2 outline-none">
+                    <select
+                        id="requiredSpotr"
+                        className="border-b-2 outline-none"
+                        name="requiredSpotr"
+                        value={inputs.requiredSpotr}
+                        onChange={handleChange}
+                    >
                         <option value="">Select</option>
-                        <option value="carpentary">carpentary</option>
-                        <option value="plumbing">plumbing</option>
-                        <option value="painting">painting</option>
-                        <option value="electrical work">electrical work</option>
-                        <option value="landscaping">landscaping</option>
-                        <option value="heavy lifting">heavy lifting</option>
+                        <option value="carpentry">Carpentry</option>
+                        <option value="plumbing">Plumbing</option>
+                        <option value="painting">Painting</option>
+                        <option value="electrical work">Electrical Work</option>
+                        <option value="landscaping">Landscaping</option>
+                        <option value="heavy lifting">Heavy Lifting</option>
                     </select>
 
-                    <input type="number" className="border-2 border-black w-8 px-2 rounded-lg" id="noSpotr"/>
                     <button className="border px-2 rounded-md" onClick={handleClickr}>save</button>
-
                 </div>
-               
                 <div className="flex justify-center">
-                    <button className="border py-2 px-4 shadow-[-3px_3px_0_0_rgba(56,163,165,1)] my-3 rounded-3xl ">Create event</button>
+                    <button className="border py-2 px-4 shadow-[-3px_3px_0_0_rgba(56,163,165,1)] border-[#38A3A5]  my-3 rounded-3xl " onClick={handleSubmit}>Create event</button>
                 </div>
             </div>
         </div>
