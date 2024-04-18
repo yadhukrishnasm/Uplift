@@ -55,7 +55,7 @@ export default function Profile() {
 
     fetchUserData(); // Call the function to fetch data
   }, []);
-
+  console.log(userData)
   return (
     <div className="pl-8 pt-8 flex flex-col gap-6">
       <span className="text-xl">Profile</span>
@@ -63,11 +63,11 @@ export default function Profile() {
         <span className="text-3xl">{userData.name}</span>
         <div className="relative h-20 ">
           <div className="absolute right-0 h-16 w-16 flex flex-col">
-            <p className="text-2xl text-yellow-300">24K</p>
+            <p className="text-2xl text-yellow-300">{userData.exp}</p>
             <span>XP</span>
           </div>
-          <p className="text-sm my-2">email</p>
-          <p className="font-bold">number</p>
+          <p className="text-sm my-2">{userData.email}</p>
+          <p className="font-bold">{userData.phone}</p>
         </div>
       </div>
 
@@ -80,11 +80,10 @@ export default function Profile() {
 
       <div>
         <p className="font-bold mb-4">skills</p>
-        <Skill value="cleaning" />
-        <Skill value="sewing" />
-        <Skill value="sewing" />
-        <Skill value="sewing" />
-        <Skill value="sewing" />
+        {userData.skills.map((element, index) => {
+          return <Skill value = {element} />
+        })}
+
       </div>
 
       <div className="pr-8">

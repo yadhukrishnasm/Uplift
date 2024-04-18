@@ -26,9 +26,7 @@ export default function Skills() {
     navigate("/d/discover");
   };
 
-  function clearSelections(){
-    skills = [];
-  }
+ 
 
   return (
     <div className="py-12 flex flex-col h-screen gap-8">
@@ -63,11 +61,10 @@ export default function Skills() {
           </div>
         </div>
       </div>
-        <button onClick={clearSelections} className="px-4 rounded-full border">clear selection</button>
       <div className="flex justify-center">
         <button
           onClick={SaveUserData}
-          className="px-4 rounded-full border w-fit h-12 shadow-[-3px_3px_0_0_rgba(56,163,165,1)]bg-green-300"
+          className="px-4 rounded-full border w-fit h-12 shadow-[-3px_3px_0_0_rgba(56,163,165,1)] bg-green-300"
         >
           discover events
         </button>
@@ -80,13 +77,11 @@ const Skill = ({ value }) => {
   const [selected, setSelected] = useState(false);
   const bg = "bg-[#8DD7D8]";
 
-  const [clicked, setClicked] = useState(false);
-
   const AddSkills = () => {
     if (!selected) {
       skills.push(value);
       console.log(skills);
-      setSelected(true);
+      setSelected(!selected);
     }
   };
   return (
