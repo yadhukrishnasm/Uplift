@@ -95,7 +95,7 @@ export default function Events() {
         <div>
           <div className="flex flex-row place-content-end w-full mb-6">
             <Link
-              to="event/new"
+              to="/event/new"
               className="place-self-end border border-black py-[.1rem] px-3 h-fit bg-green-200 rounded-full"
             >
               create event
